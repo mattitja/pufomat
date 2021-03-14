@@ -15,7 +15,7 @@ function changeSpeed(value) {
   if (!running) {
       synth.cancel();
       voicespeed = value;
-      introVoice("Geschwindigkeits-Test zu langsam oder zu schnell?")
+      florentinVoice("Geschwindigkeits-Test zu langsam oder zu schnell?")
       console.log("changed speed to " + (voicespeed/50))
 
   }
@@ -57,7 +57,7 @@ function reload() {
 }
 
 function addIntro() {
-  let introtext = "(la, laaa, lalala laaa! lah lah lah lala! lah lah lah laa!!)";
+  let introtext = "(Intro: la, laaa, lalala laaa! lah lah lah lala! lah lah lah laa!!)";
 
   const messagesContainer = document.getElementById("messages");
 
