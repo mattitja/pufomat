@@ -1,10 +1,15 @@
 var running = false;
 var floIsDran = true;
+var firstStart = true;
 var thinkText = "...";
 const interruptText = "(wurde abgewürgt)"
 
 function start() {
 	running = !running;
+	if (firstStart) {
+	    firstStart = false;
+	    addIntro();
+	}
 	if (running) {
 		if (floIsDran) {
 			addFlorentin();
@@ -16,10 +21,30 @@ function start() {
 		button.innerText = 'PAUSE!'
 	} else {
 		const button = document.getElementById("button");
-		button.innerText = 'kann weiter gehn'
+		button.innerText = 'weitermachen!'
 		synth.cancel();
 	}
 	
+}
+
+function addIntro() {
+  let introtext = "(la, laaa, lalala laaa! lah lah lah lala! lah lah lah laa!!)";
+
+  const messagesContainer = document.getElementById("messages");
+
+  let botDiv = document.createElement("div");
+  let botImg = document.createElement("img");
+  let botText = document.createElement("span");
+  botDiv.id = "bot";
+  botImg.src = "bot-mini.png";
+  botImg.className = "avatar";
+  botDiv.className = "bot response";
+  botText.innerText = introtext;
+  botDiv.appendChild(botText);
+  botDiv.appendChild(botImg);
+  messagesContainer.appendChild(botDiv);
+
+  introVoice(introtext)
 }
 
 function addFlorentin() {
