@@ -1,11 +1,12 @@
-# JavaScript Chatbot 
+# PUFOMAT
 
-This is a very simple "chatbot" using nothing but JavaScript, HTML, & CSS. I put this in quotes because chatbots these days are way more complex - this is an exercise in vanilla JS loops and conditionals, not AI.
+Hier liegt der supergeheime Geheimcode des PUFOMATEN.
 
-I hope it makes a good intro for anyone interested in chatbots and frontend fundamentals.
+## Vorsicht!
 
-Enjoy!
+Achtung, schlafende künstliche Intelligenzen! BITTE RUHE! NICHT FÜTTERN!
 
-[Demo](https://sylviapap.github.io/chatbot/)
+## Mitmachen
+wir brauchen als Futter noch viiiiiiiiiiel mehr Transkripte! Haut in die Tasten und legt sie auf die Pufopedia unter die jeweiligen Folgen. 
 
-[Blog post](https://dev.to/sylviapap/make-a-simple-chatbot-with-javascript-1gc)
+Die KIs finden ihr Fressen dann schon...
