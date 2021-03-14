@@ -15,7 +15,7 @@ function changeSpeed(value) {
   if (!running) {
       synth.cancel();
       voicespeed = value;
-      introVoice("Geschwindigkeits-Test. Zu langsam oder zu schnell?")
+      introVoice("Geschwindigkeits-Test zu langsam oder zu schnell?")
       console.log("changed speed to " + (voicespeed/50))
 
   }
@@ -39,7 +39,7 @@ function start() {
 	}
 	if (running) {
 		const button = document.getElementById("button");
-		button.innerText = 'PAUSE! (Geschwindigkeit verändern?)'
+		button.innerText = 'STOP!'
 		button.className = 'red-button'
 		speedcontainer.style.display = "none";
 	} else {
