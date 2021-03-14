@@ -2,6 +2,7 @@ var running = false;
 var floIsDran = true;
 var firstStart = true;
 var thinkText = "...";
+var pauseInMilliseconds = "4000"
 const interruptText = "(wurde abgewürgt)"
 
 function start() {
@@ -9,22 +10,29 @@ function start() {
 	if (firstStart) {
 	    firstStart = false;
 	    addIntro();
+	} else {
+        if (floIsDran) {
+            addFlorentin();
+        } else {
+            addStefan();
+        }
 	}
 	if (running) {
-		if (floIsDran) {
-			addFlorentin();
-		} else {
-			addStefan();
-		}
+
 	
 		const button = document.getElementById("button");
 		button.innerText = 'PAUSE!'
+		button.className = 'red-button'
 	} else {
 		const button = document.getElementById("button");
 		button.innerText = 'weitermachen!'
+		button.className = 'green-button'
 		synth.cancel();
 	}
-	
+}
+
+function reload() {
+    location.reload();
 }
 
 function addIntro() {
@@ -43,8 +51,14 @@ function addIntro() {
   botDiv.appendChild(botText);
   botDiv.appendChild(botImg);
   messagesContainer.appendChild(botDiv);
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
   introVoice(introtext)
+  voice.onend = function(event) {
+      if (running) {
+        addFlorentin();
+      }
+    }
 }
 
 function addFlorentin() {
@@ -64,19 +78,15 @@ function addFlorentin() {
   botDiv.appendChild(botText);
   botDiv.appendChild(botImg);
   messagesContainer.appendChild(botDiv);
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-  if (running) {
-      setTimeout(() => {
-        if (running) {
-          botText.innerText = `${product}`;
-          florentinVoice(product)
-          addStefan()
-        } else {
-          botText.innerText = interruptText;
-        }
-      }, 3000)
-  } else {
-    botText.innerText = interruptText;
+  botText.innerText = `${product}`;
+  florentinVoice(product)
+
+  voice.onend = function(event) {
+    if (running) {
+      addStefan();
+    }
   }
 
 }
@@ -94,20 +104,16 @@ function addStefan() {
   userDiv.className = "user response";
   userDiv.innerHTML = `<img src="steff_klein.png" class="avatar"><span>${thinkText}</span>`;
   messagesContainer.appendChild(userDiv);
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-  if (running) {
-    setTimeout(() => {
+  userDiv.innerHTML = `<img src="steff_klein.png" class="avatar"><span>${product}</span>`;
+  stefanVoice(product)
+
+  voice.onend = function(event) {
       if (running) {
-	  userDiv.innerHTML = `<img src="steff_klein.png" class="avatar"><span>${product}</span>`;
-	  stefanVoice(product)
-      addFlorentin()
-      } else {
-        userDiv.innerHTML = `<img src="steff_klein.png" class="avatar"><span>${interruptText}</span>`;
+        addFlorentin();
       }
-    }, 3000)
-  } else {
-    userDiv.innerHTML = `<img src="steff_klein.png" class="avatar"><span>${interruptText}</span>`;
-  }
+    }
 
 }
 
