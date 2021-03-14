@@ -72,7 +72,7 @@ function addIntro() {
   botDiv.appendChild(botText);
   botDiv.appendChild(botImg);
   messagesContainer.appendChild(botDiv);
-  messagesContainer.scrollTop = messagesContainer.scrollHeight - messagesContainer.clientHeight;
+  scroll(messagesContainer);
 
   introVoice(introtext)
   voice.onend = function(event) {
@@ -99,7 +99,7 @@ function addFlorentin() {
   botDiv.appendChild(botText);
   botDiv.appendChild(botImg);
   messagesContainer.appendChild(botDiv);
-  messagesContainer.scrollTop = messagesContainer.scrollHeight - messagesContainer.clientHeight;
+ scroll(messagesContainer);
 
   botText.innerText = `${product}`;
   florentinVoice(product)
@@ -125,7 +125,7 @@ function addStefan() {
   userDiv.className = "user response";
   userDiv.innerHTML = `<img src="steff_klein.png" class="avatar"><span>${thinkText}</span>`;
   messagesContainer.appendChild(userDiv);
-  messagesContainer.scrollTop = messagesContainer.scrollHeight - messagesContainer.clientHeight;
+  scroll(messagesContainer);
 
   userDiv.innerHTML = `<img src="steff_klein.png" class="avatar"><span>${product}</span>`;
   stefanVoice(product)
@@ -136,6 +136,10 @@ function addStefan() {
       }
     }
 
+}
+
+function scroll(element) {
+  element.scrollTop = element.scrollHeight - element.clientHeight;
 }
 
 function getFlorentin() {
