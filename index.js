@@ -39,7 +39,7 @@ function start() {
 	}
 	if (running) {
 		const button = document.getElementById("button");
-		button.innerText = 'STOP!'
+		button.innerText = 'PAUSE (z.B. Geschwindigkeit verändern)'
 		button.className = 'red-button'
 		speedcontainer.style.display = "none";
 	} else {
@@ -57,7 +57,7 @@ function reload() {
 }
 
 function addIntro() {
-  let introtext = "(Intro: la, laaa, lalala laaa! lah lah lah lala! lah lah lah laa!!)";
+  let introtext = "la, laaa, lalala laaa! lah lah lah lala! lah lah lah laa!!";
 
   const messagesContainer = document.getElementById("messages");
 
@@ -68,7 +68,7 @@ function addIntro() {
   botImg.src = "bot-mini.png";
   botImg.className = "avatar";
   botDiv.className = "bot response intro";
-  botText.innerText = introtext;
+  botText.innerText = "(Intro): " + introtext + "";
   botDiv.appendChild(botText);
   botDiv.appendChild(botImg);
   messagesContainer.appendChild(botDiv);

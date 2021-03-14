@@ -52,7 +52,7 @@ input {
 .bot, body {
 	font-family: Consolas, 'Courier New', Menlo, source-code-pro, Monaco,  
 	monospace;
-	font-size:large;
+	font-size:x-large;
 }
 
 .user {
@@ -112,7 +112,7 @@ input {
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
-	font-size:15px;
+	font-size:20px;
 	font-weight:bold;
 	padding:6px 24px;
 	text-decoration:none;
@@ -129,7 +129,7 @@ input {
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
-	font-size:15px;
+	font-size:20px;
 	font-weight:bold;
 	padding:6px 24px;
 	text-decoration:none;
@@ -147,7 +147,7 @@ input {
 	cursor:pointer;
 	color:#666666;
 	font-family:Arial;
-	font-size:15px;
+	font-size:20px;
 	font-weight:bold;
 	padding:6px 24px;
 	text-decoration:none;
