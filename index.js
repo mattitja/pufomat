@@ -3,10 +3,28 @@ var floIsDran = true;
 var firstStart = true;
 var thinkText = "...";
 var pauseInMilliseconds = "4000"
+var voicespeed = 50;
 const interruptText = "(wurde abgewürgt)"
+
+const slider = document.getElementById("voicespeed");
+slider.value = 50;
+
+var speedcontainer = document.getElementById("speedcontainer");
+
+function changeSpeed(value) {
+  if (!running) {
+      synth.cancel();
+      voicespeed = value;
+      introVoice("Geschwindigkeits-Test. Zu langsam oder zu schnell?")
+      console.log("changed speed to " + (voicespeed/50))
+
+  }
+}
+
 
 function start() {
 	running = !running;
+	synth.cancel();
 	if (firstStart) {
 	    firstStart = false;
 	    addIntro();
@@ -20,20 +38,21 @@ function start() {
         }
 	}
 	if (running) {
-
-	
 		const button = document.getElementById("button");
-		button.innerText = 'PAUSE!'
+		button.innerText = 'PAUSE! (Geschwindigkeit verändern?)'
 		button.className = 'red-button'
+		speedcontainer.style.display = "none";
 	} else {
 		const button = document.getElementById("button");
 		button.innerText = 'weitermachen!'
 		button.className = 'green-button'
+		speedcontainer.style.display = "block";
 		synth.cancel();
 	}
 }
 
 function reload() {
+    synth.cancel();
     location.reload();
 }
 

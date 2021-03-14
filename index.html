@@ -2,39 +2,49 @@
 <html>
 
 <head>
-	<title>Pufomat 1.0</title>
-	<link rel="icon" href="bot-mini.png" />
-	<link rel="stylesheet" href="style.css" />
+    <title>Pufomat 1.0</title>
+    <link rel="icon" href="bot-mini.png"/>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 
 <body>
-	<div id="container" class="container">
-		<img src="steff_gross.png" height="300vh">
-		<div id="chat" class="chat">
-			<h1>Der PUFOMAT 1.0</h1>
-			<div>
-				Gleich zwei künstliche Intelligenzen haben eingehend <a href="http://pufopedia.info/index.php?title=UFO001_Prolog">die ersten 16 Minuten der 1. DPU-Folge</a> studiert und stehen nun für euch bereit <b>beliebig viele neue Folgen</b> zum Besten zu geben. Viel Spaßß!
-			</div>
-			<div id="messages" class="messages"></div>
-			<button id="button" class="green-button" onclick="start()">Neue DPU-Folge generieren und vorlesen</button>
-			<button id="button2" class="white-button" onclick="reload()">Von vorne anfangen</button>
-			<div class="small">
-				<br>
-				<b><p style="color:red">Vorlesefunktion spackt manchmal auf iPhones!</p></b> Witzigerweise hat jeder Browser andere Stimmen, ich finde Safari am Lustigsten.
-			</div>
-			<div class="small">
-				<br>
-				<i>Vorschläge für neue Features an <a href="https://t.me/matzematratze">@matzematratze</a> via Telegram.
-					<a href="https://github.com/mattitja/pufomat">Der Code und Hinweise zum Mitmachen hier.</a></i>
-			</div>
+<img src="pufomat.png" width="300" align="center">
+<h1>Der PUFOMAT 1.0</h1>
+
+<div>
+    Gleich zwei künstliche Intelligenzen haben eingehend <a href="http://pufopedia.info/index.php?title=UFO001_Prolog">die
+    ersten 16 Minuten der 1. DPU-Folge</a> studiert und stehen nun für euch bereit <b>beliebig viele neue Folgen</b> zum
+    Besten zu geben. Viel Spaßß!
+</div>
+<div id="chat" class="chat">
+
+    <div id="messages" class="messages"></div>
 
 
-		</div>
-		<img src="flo_gross.png" height="300vh">
-	</div>
+</div>
+
+<div id="speedcontainer">
+    <label for="voicespeed">Vorlesegeschwindigkeit (vorher einstellen):</label> <input type="range" min="0" max="100" value="50" class="slider" id="voicespeed" onchange="changeSpeed(this.value)"></div>
+<button id="button" class="green-button" onclick="start()">Neue DPU-Folge generieren und vorlesen</button>
+<button id="button2" class="white-button" onclick="reload()">Von vorne anfangen</button>
+
+<div class="small">
+    <br>
+    <b><p style="color:red">Vorlesefunktion spackt manchmal auf iPhones! Lieber aufm PC benutzen.</p></b> Witzigerweise hat jeder Browser andere
+    Stimmen, ich finde Safari am Lustigsten.
+</div>
+<div class="small">
+    <br>
+    <i>Vorschläge für neue Features an <a href="https://t.me/matzematratze">@matzematratze</a> via Telegram.
+        <a href="https://github.com/mattitja/pufomat">Der Code und Hinweise zum Mitmachen hier.</a></i>
+    <br>
+</div>
+<br>
+<b>Wir brauchen noch viel mehr Transkripte als FUTTER für die MASCHINEN! Transkribiert fleißig weiter Folgen und packt die Transkripte auf die Pufopedia unter die jeweilige Folge!!</b>
+
 </body>
-<script type="text/javascript" src="index.js" charset="UTF-8" ></script>
-<script type="text/javascript" src="constants.js" charset="UTF-8" ></script>
-<script type="text/javascript" src="speech.js" charset="UTF-8" ></script>
+<script type="text/javascript" src="index.js" charset="UTF-8"></script>
+<script type="text/javascript" src="constants.js" charset="UTF-8"></script>
+<script type="text/javascript" src="speech.js" charset="UTF-8"></script>
 
 </html>
