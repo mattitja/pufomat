@@ -67,9 +67,17 @@ input {
 	margin-left: auto;
 }
 
-.bot {
+.bot, h1, body {
 	font-family: Consolas, 'Courier New', Menlo, source-code-pro, Monaco,  
 	monospace;
+}
+
+.user {
+	font-style: italic;
+}
+
+.intro {
+	font-weight: bold;
 }
 
 .avatar {

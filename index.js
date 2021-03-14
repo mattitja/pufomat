@@ -11,10 +11,12 @@ function start() {
 	    firstStart = false;
 	    addIntro();
 	} else {
-        if (floIsDran) {
-            addFlorentin();
-        } else {
-            addStefan();
+	    if (running) {
+            if (floIsDran) {
+                addFlorentin();
+            } else {
+                addStefan();
+            }
         }
 	}
 	if (running) {
@@ -46,12 +48,12 @@ function addIntro() {
   botDiv.id = "bot";
   botImg.src = "bot-mini.png";
   botImg.className = "avatar";
-  botDiv.className = "bot response";
+  botDiv.className = "bot response intro";
   botText.innerText = introtext;
   botDiv.appendChild(botText);
   botDiv.appendChild(botImg);
   messagesContainer.appendChild(botDiv);
-  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  messagesContainer.scrollTop = messagesContainer.scrollHeight - messagesContainer.clientHeight;
 
   introVoice(introtext)
   voice.onend = function(event) {
@@ -78,7 +80,7 @@ function addFlorentin() {
   botDiv.appendChild(botText);
   botDiv.appendChild(botImg);
   messagesContainer.appendChild(botDiv);
-  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  messagesContainer.scrollTop = messagesContainer.scrollHeight - messagesContainer.clientHeight;
 
   botText.innerText = `${product}`;
   florentinVoice(product)
@@ -104,7 +106,7 @@ function addStefan() {
   userDiv.className = "user response";
   userDiv.innerHTML = `<img src="steff_klein.png" class="avatar"><span>${thinkText}</span>`;
   messagesContainer.appendChild(userDiv);
-  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  messagesContainer.scrollTop = messagesContainer.scrollHeight - messagesContainer.clientHeight;
 
   userDiv.innerHTML = `<img src="steff_klein.png" class="avatar"><span>${product}</span>`;
   stefanVoice(product)
