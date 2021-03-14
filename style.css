@@ -32,7 +32,7 @@ span {
 }
 
 .chat {
-	height: 1200px;
+	height: 600px;
 	width: 50vw;
 	display: flex;
 	flex-direction: column;
@@ -67,9 +67,12 @@ input {
 	margin-left: auto;
 }
 
-.bot, h1, body {
+.bot, body {
 	font-family: Consolas, 'Courier New', Menlo, source-code-pro, Monaco,  
 	monospace;
+}
+.small {
+    font-size:small;
 }
 
 .user {
