@@ -2,18 +2,19 @@
 <html>
 
 <head>
-    <title>Puf-O-Mat 1.0</title>
+    <title>Puf-O-Mat 1.1</title>
     <link rel="icon" href="bot-mini.png"/>
     <link rel="stylesheet" href="style.css"/>
 </head>
 
 <body>
 <img src="pufomat.png" width="400" align="center">
-<h1>Der Puf-O-Mat 1.0</h1>
+
+<h1>Der Puf-O-Mat 1.1</h1>
 
 <div>
-    <b>Zwei künstliche Intelligenzen</b>* haben
-    <ul><li>eingehend <a href="http://pufopedia.info/index.php?title=UFO001_Prolog">
+    <b>Zwei künstliche Intelligenzen</b>*
+    <ul><li>haben eingehend <a href="http://pufopedia.info/index.php?title=UFO001_Prolog">
     16 Minuten der DPU-Folge #1</a> studiert</li> <li>und stehen nun für euch bereit <b>beliebig viele neue Folgen</b> zum
     Besten zu geben.</li></ul> Viel Spaßß!
 </div>
@@ -21,27 +22,57 @@
     <div id="messages" class="messages"></div>
 </div>
 
-<div id="speedcontainer">
-    <label for="voicespeed">Vorlesegeschwindigkeit (vorher einstellen!):</label> <input type="range" min="0" max="100" value="50" class="slider" id="voicespeed" onchange="changeSpeed(this.value)"></div>
-<br>
 <button id="button" class="green-button" onclick="start()">Neue DPU-Folge generieren und vorlesen</button>
 <br>
 <br>
-<button id="button2" class="white-button" onclick="reload()">Von vorne anfangen</button>
+<button id="scriptButton" onclick="download()" class="light-green-button">Skript maximieren</button>
+<button id="skipIntroButton" class="white-button" onclick="skipIntro()">skip intro</button>
 <br>
-
+<br>
+<button id="reloadButton" id="button2" class="white-button" onclick="reload()">Von vorne anfangen</button>
+<br>
+<br>
+<div id="vorleseButtonContainer">
+    <button id="vorleseButton" class="blue-button" onclick="toggleVorlesen()">Vorlesefunktion ist an</button>
+</div>
+<br>
+<div id="speedcontainer">
+    <label for="voicespeed">Vorlesegeschwindigkeit einstellen:</label>
+    <input type="range" min="0" max="100" value="50" class="slider" id="voicespeed" onchange="changeSpeed(this.value)">
+</div>
+<br>
+<hr>
 <h2>Mitmachen!</h2>
 <ul>
     <li>Wir brauchen noch viel mehr Transkripte als FUTTER für die MASCHINEN! Transkribiert fleißig weiter Folgen und packt die Transkripte auf die Pufopedia unter die jeweilige Folge!!</li>
     <li>Vorschläge für neue Puf-O-Mat-Features an <a href="https://t.me/matzematratze">@matzematratze</a>.</li>
     <li>Der Code ist natürlich Open-Source und <a href="https://github.com/mattitja/pufomat">liegt hier</a>.</li>
 </ul>
-
-<h2> Feature-Requests</h2>
+<hr>
+<h2> Feature-Requests für nächste Version</h2>
 <ul>
-    <li>Vorlesen ausschaltbar machen (Sonja)</li>
     <li>Wechselnde Intros (Sonja)</li>
+    <li>Witzigere KI! (Karoline)</li>
 </ul>
+<hr>
+<h2> Letzte Updates</h2>
+<h3> Version 1.1 (16.03.2020, 00:30 Uhr)</h3>
+<ul>
+    <li>Vorlesen ausschaltbar gemacht</li>
+    <li>Skript maximierbar</li>
+    <li>Neues Robo-Intro</li>
+    <li>Intro ist überspringbar</li>
+</ul>
+<hr>
+<h3> Version 1.0 (14.03.2020, 20:00 Uhr)</h3>
+<ul>
+    <li>Der Puf-O-Mat erblickt das Licht der Welt</li>
+    <li>Import der ersten 16 Minuten aus DPU-Folge #1</li>
+    <li>"Rudimentäre" KI*</li>
+    <li>Reservierung der pufomat.fail-Domain (29€ im Jahr)</li>
+    <li>Pitch in der PUFO-Telegram-Gruppe (Feedback verhalten)</li>
+</ul>
+
 <br>
 <br>
 <div class="small">

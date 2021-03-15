@@ -4,14 +4,28 @@ var firstStart = true;
 var thinkText = "...";
 var pauseInMilliseconds = "4000"
 var voicespeed = 50;
+var vorlesen = true;
 const interruptText = "(wurde abgewürgt)"
+var counter = 0;
+var counterMax = 100;
 
+const startButton = document.getElementById("button");
 const slider = document.getElementById("voicespeed");
+const messagesContainer = document.getElementById("messages");
+const scriptButton = document.getElementById("scriptButton");
+scriptButton.style.display = "none";
+
+const skipIntroButton = document.getElementById("skipIntroButton");
+skipIntroButton.style.display = "none";
+
 slider.value = 50;
 
 var introAudio = new Audio('intro1.mp3');
 
 var speedcontainer = document.getElementById("speedcontainer");
+var vorleseButton = document.getElementById("vorleseButton");
+var vorleseButtonContainer = document.getElementById("vorleseButtonContainer");
+
 
 function changeSpeed(value) {
   if (!running) {
@@ -26,6 +40,7 @@ function start() {
 	running = !running;
 	synth.cancel();
 	introAudio.pause();
+
 	if (firstStart) {
 	    firstStart = false;
 	    addIntro();
@@ -39,17 +54,41 @@ function start() {
         }
 	}
 	if (running) {
-		const button = document.getElementById("button");
-		button.innerText = 'PAUSE (z.B. Geschwindigkeit verändern)'
-		button.className = 'red-button'
-		speedcontainer.style.display = "none";
+	    if (vorlesen) {
+            startButton.innerText = 'PAUSE (z.B. Geschwindigkeit verändern)'
+            startButton.className = 'red-button'
+            speedcontainer.style.display = "none";
+            vorleseButtonContainer.style.display = "none";
+            scriptButton.style.display = "none";
+		} else {
+		    startButton.style.display = "none";
+		    speedcontainer.style.display = "none";
+		    vorleseButtonContainer.style.display = "none";
+		    scriptButton.style.display = "block";
+		}
 	} else {
-		const button = document.getElementById("button");
-		button.innerText = 'weitermachen!'
-		button.className = 'green-button'
+		startButton.innerText = 'weiter vorlesen!'
+		startButton.className = 'green-button'
 		speedcontainer.style.display = "block";
+		scriptButton.style.display = "block";
+		skipIntroButton.style.display = "none";
 		synth.cancel();
 	}
+}
+
+function toggleVorlesen() {
+    vorlesen = !vorlesen;
+    if (vorlesen) {
+        vorleseButton.innerText = 'Vorlesefunktion ist an'
+        vorleseButton.className = 'blue-button'
+        speedcontainer.style.display = "block";
+        startButton.innerText = 'Neue DPU-Folge generieren und vorlesen'
+    } else {
+        vorleseButton.innerText = 'Vorlesefunktion ist aus'
+        vorleseButton.className = 'orange-button'
+        speedcontainer.style.display = "none";
+        startButton.innerText = 'Neue DPU-Folge nur generieren'
+    }
 }
 
 function reload() {
@@ -57,10 +96,16 @@ function reload() {
     location.reload();
 }
 
+function skipIntro() {
+    introAudio.pause();
+    skipIntroButton.style.display = "none";
+    if (running) {
+        addFlorentin();
+    }
+}
+
 function addIntro() {
   let introtext = "welcome to d.p.u. podcast, this is another great generated episode for you, i am an artificial intelligence yeah";
-
-  const messagesContainer = document.getElementById("messages");
 
   let botDiv = document.createElement("div");
   let botImg = document.createElement("img");
@@ -75,20 +120,29 @@ function addIntro() {
   messagesContainer.appendChild(botDiv);
   scroll(messagesContainer);
 
-  introAudio.play();
-
-  introAudio.onended  = function() {
-      if (running) {
-        addFlorentin();
+  if (vorlesen) {
+      introAudio.play();
+      skipIntroButton.style.display = "block";
+      introAudio.onended  = function() {
+          skipIntroButton.style.display = "none";
+          if (running) {
+            addFlorentin();
+          }
       }
-    }
+  } else {
+     addFlorentin();
+  }
 }
 
 function addFlorentin() {
+  counter++;
+  if (counter >= counterMax) {
+    addEnde();
+    return;
+  }
   floIsDran = false;
 	
   let product = getFlorentin();
-  const messagesContainer = document.getElementById("messages");
 
   let botDiv = document.createElement("div");
   let botImg = document.createElement("img");
@@ -104,23 +158,29 @@ function addFlorentin() {
  scroll(messagesContainer);
 
   botText.innerText = `${product}`;
-  florentinVoice(product)
-
-  voice.onend = function(event) {
-    if (running) {
-      addStefan();
+  if (vorlesen) {
+    florentinVoice(product)
+    voice.onend = function(event) {
+      if (running) {
+        addStefan();
+      }
     }
+  } else {
+    addStefan();
   }
 
 }
 
 function addStefan() {
+  counter++;
+  if (counter >= counterMax) {
+    addEnde();
+    return;
+  }
 	
   floIsDran = true;
   
   let product = getStefan();
-	
-  const messagesContainer = document.getElementById("messages");
 
   let userDiv = document.createElement("div");
   userDiv.id = "user";
@@ -130,13 +190,33 @@ function addStefan() {
   scroll(messagesContainer);
 
   userDiv.innerHTML = `<img src="steff_klein.png" class="avatar"><span>${product}</span>`;
-  stefanVoice(product)
 
-  voice.onend = function(event) {
-      if (running) {
-        addFlorentin();
+    if (vorlesen) {
+      stefanVoice(product)
+      voice.onend = function(event) {
+        if (running) {
+          addFlorentin();
+        }
       }
+    } else {
+      addFlorentin();
     }
+
+}
+
+function addEnde() {
+    let botDiv = document.createElement("div");
+  let botImg = document.createElement("img");
+  let botText = document.createElement("span");
+  botDiv.id = "bot";
+  botImg.src = "bot-mini.png";
+  botImg.className = "avatar";
+  botDiv.className = "bot response intro";
+  botText.innerText = "It's a worstbird production. Arrrggh!";
+  botDiv.appendChild(botText);
+  botDiv.appendChild(botImg);
+  messagesContainer.appendChild(botDiv);
+  scroll(messagesContainer);
 
 }
 
@@ -150,4 +230,17 @@ function getFlorentin() {
 
 function getStefan() {
 	return stefan[Math.floor(Math.random() * stefan.length)];
+}
+
+function download() {
+    document.open();
+
+    document.write('<!DOCTYPE html><html><head><title>Puf-O-Mat 1.1</title><link rel="icon" href="bot-mini.png"/><link rel="stylesheet" href="style.css"/></head>');
+    document.write('<body>');
+    document.write('<button class="orange-button" onclick="window.location.reload();">Zurück zum Puf-O-Maten (löscht diese Folge)</button>');
+    document.write('<div id="messages" class="messages">');
+    document.write(messagesContainer.innerHTML);
+    document.write('</div>');
+    document.write('<button class="orange-button" onclick="window.location.reload();">Zurück zum Puf-O-Maten (löscht diese Folge)</button>');
+    document.write('</body></html>');
 }
