@@ -22,24 +22,24 @@
     <div id="messages" class="messages"></div>
 </div>
 
-<button id="button" class="green-button" onclick="start()">Neue DPU-Folge generieren und vorlesen</button>
+<button id="button" class="green-button" onclick="start()">Neue DPU-Folge schrittweise vorlesen</button>
 <br>
 <br>
 <button id="scriptButton" onclick="download()" class="light-green-button">Skript maximieren</button>
 <button id="skipIntroButton" class="white-button" onclick="skipIntro()">skip intro</button>
 <br>
 <br>
-<button id="reloadButton" id="button2" class="white-button" onclick="reload()">Von vorne anfangen</button>
-<br>
-<br>
 <div id="vorleseButtonContainer">
-    <button id="vorleseButton" class="blue-button" onclick="toggleVorlesen()">Vorlesefunktion ist an</button>
+    <button id="vorleseButton" class="blue-button" onclick="toggleVorlesen()">schrittweise Vorlesefunktion ist an</button>
 </div>
 <br>
 <div id="speedcontainer">
     <label for="voicespeed">Vorlesegeschwindigkeit einstellen:</label>
     <input type="range" min="0" max="100" value="50" class="slider" id="voicespeed" onchange="changeSpeed(this.value)">
 </div>
+<br>
+<br>
+<button id="reloadButton" id="button2" class="white-button" onclick="reload()">Ganz von vorne anfangen</button>
 <br>
 <hr>
 <h2>Mitmachen!</h2>

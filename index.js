@@ -55,7 +55,7 @@ function start() {
 	}
 	if (running) {
 	    if (vorlesen) {
-            startButton.innerText = 'PAUSE (z.B. Geschwindigkeit verändern)'
+            startButton.innerText = 'PAUSE (Geschwindigkeit, Skript maximieren)'
             startButton.className = 'red-button'
             speedcontainer.style.display = "none";
             vorleseButtonContainer.style.display = "none";
@@ -79,15 +79,15 @@ function start() {
 function toggleVorlesen() {
     vorlesen = !vorlesen;
     if (vorlesen) {
-        vorleseButton.innerText = 'Vorlesefunktion ist an'
+        vorleseButton.innerText = 'schrittweise Vorlesefunktion ist an'
         vorleseButton.className = 'blue-button'
         speedcontainer.style.display = "block";
-        startButton.innerText = 'Neue DPU-Folge generieren und vorlesen'
+        startButton.innerText = 'Neue DPU-Folge schrittweise vorlesen'
     } else {
-        vorleseButton.innerText = 'Vorlesefunktion ist aus'
+        vorleseButton.innerText = 'schrittweise Vorlesefunktion ist aus'
         vorleseButton.className = 'orange-button'
         speedcontainer.style.display = "none";
-        startButton.innerText = 'Neue DPU-Folge nur generieren'
+        startButton.innerText = 'Neue DPU-Folge komplett generieren'
     }
 }
 
