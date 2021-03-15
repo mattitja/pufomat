@@ -9,6 +9,8 @@ const interruptText = "(wurde abgewürgt)"
 const slider = document.getElementById("voicespeed");
 slider.value = 50;
 
+var introAudio = new Audio('intro1.mp3');
+
 var speedcontainer = document.getElementById("speedcontainer");
 
 function changeSpeed(value) {
@@ -16,8 +18,6 @@ function changeSpeed(value) {
       synth.cancel();
       voicespeed = value;
       florentinVoice("Geschwindigkeits-Test zu langsam oder zu schnell?")
-      console.log("changed speed to " + (voicespeed/50))
-
   }
 }
 
@@ -25,6 +25,7 @@ function changeSpeed(value) {
 function start() {
 	running = !running;
 	synth.cancel();
+	introAudio.pause();
 	if (firstStart) {
 	    firstStart = false;
 	    addIntro();
@@ -57,7 +58,7 @@ function reload() {
 }
 
 function addIntro() {
-  let introtext = "la, laaa, lalala laaa! lah lah lah lala! lah lah lah laa!!";
+  let introtext = "welcome to d.p.u. podcast, this is another great generated episode for you, i am an artificial intelligence yeah";
 
   const messagesContainer = document.getElementById("messages");
 
@@ -74,8 +75,9 @@ function addIntro() {
   messagesContainer.appendChild(botDiv);
   scroll(messagesContainer);
 
-  introVoice(introtext)
-  voice.onend = function(event) {
+  introAudio.play();
+
+  introAudio.onended  = function() {
       if (running) {
         addFlorentin();
       }
