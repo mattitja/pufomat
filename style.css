@@ -18,10 +18,10 @@ font-size: xx-small;
 }
 
 .chat {
-	height: 400px;
-	width: 50vw;
-	display: flex;
-	flex-direction: column;
+	height: 600px;
+
+
+
   justify-content: center;
 	align-items: center;
 } 
@@ -100,9 +100,6 @@ input {
   .container {
 		flex-direction: column;
 		justify-content: flex-start;
-	}
-	.chat {
-		width: 75vw;
 	}
 }
 

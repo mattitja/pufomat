@@ -22,6 +22,7 @@ slider.value = 50;
 
 var introAudio = new Audio('intro1.mp3');
 
+
 var speedcontainer = document.getElementById("speedcontainer");
 var vorleseButton = document.getElementById("vorleseButton");
 var vorleseButtonContainer = document.getElementById("vorleseButtonContainer");
@@ -40,6 +41,7 @@ function start() {
 	running = !running;
 	synth.cancel();
 	introAudio.pause();
+	silentVoice("hi")
 
 	if (firstStart) {
 	    firstStart = false;
@@ -155,7 +157,7 @@ function addFlorentin() {
   botDiv.appendChild(botText);
   botDiv.appendChild(botImg);
   messagesContainer.appendChild(botDiv);
- scroll(messagesContainer);
+  scroll(messagesContainer);
 
   botText.innerText = `${product}`;
   if (vorlesen) {
