@@ -1,6 +1,6 @@
-# PUFOMAT
+# PUF-O-Mat
 
-Hier liegt der supergeheime Geheimcode des PUFOMATEN.
+Hier liegt der supergeheime Geheimcode des PUF-O-Mat.
 
 ## Vorsicht!
 
