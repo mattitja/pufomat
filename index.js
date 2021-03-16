@@ -237,7 +237,7 @@ function getStefan() {
 function download() {
     document.open();
 
-    document.write('<!DOCTYPE html><html><head><title>Puf-O-Mat 1.1</title><link rel="icon" href="bot-mini.png"/><link rel="stylesheet" href="style.css"/></head>');
+    document.write('<!DOCTYPE html><html><head><title>PUF-O-Mat 1.1</title><link rel="icon" href="bot-mini.png"/><link rel="stylesheet" href="style.css"/></head>');
     document.write('<body>');
     document.write('<button class="orange-button" onclick="window.location.reload();">Zurück zum Puf-O-Maten (löscht diese Folge)</button>');
     document.write('<div id="messages" class="messages">');
